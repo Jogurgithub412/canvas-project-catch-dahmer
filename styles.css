@@ -1,0 +1,23 @@
+#canvas {
+    border: 3px solid black;
+    position: relative
+}
+
+.container {
+    position: relative;
+    width: 600px;
+    height: 800px;
+    margin: auto;
+}
+
+
+.button {
+    font-family: Arial;
+    font-size: 20px;
+    width: 160px;
+    height: 80px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
