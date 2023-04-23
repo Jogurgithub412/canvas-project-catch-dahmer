@@ -32,6 +32,15 @@ class Game {
         this.square.update();
         this.square.draw(this.context);
 
+        //*if (/* future condition for increasing score */) { -----------------------------------------------------
+        //    this.score++;
+        //}
+
+        // increase life if conditions met
+        //if (/* future condition for decreasing life */) { ------------------------------------------------------------
+        //    this.lifes--;
+        //}                                                        
+
         // draw the score and lifes
         this.context.fillStyle = "#fff";
         this.context.fillRect(20, 20, 140, 40);

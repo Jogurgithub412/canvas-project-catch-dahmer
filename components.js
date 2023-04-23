@@ -56,7 +56,14 @@ class Square {
           }, 500);
         }, 500);
       }
+      if (this.x < 0) {
+        this.x = 0;
+      } else if (this.x + this.width > canvas.width) {
+        this.x = canvas.width - this.width;
+      }
     }
+    }
+    
   
     reset() {
       this.x = canvas.width / 2 - 35;
@@ -70,13 +77,13 @@ class Square {
   
     moveLeft() {
       if (!this.isResetting) {
-        this.x -= 10;
+        this.x -= 20;
       }
     }
   
     moveRight() {
       if (!this.isResetting) {
-        this.x += 10;
+        this.x += 20;
       }
     }
   
@@ -86,4 +93,24 @@ class Square {
       }
     }
   }
+
+  class Obstacle {
+    constructor() {
+      this.width = Math.floor(Math.random() * 201) + 100;
+      this.height = 80;
+      this.x = Math.random() < 0.5 ? -this.width : 600;
+      this.y = 400 - this.height / 2;
+      this.speed = 0;
+    }
+  
+    update() {
+      this.x += this.speed;
+    }
+  
+    draw(context) {
+      context.fillStyle = "blue";
+      context.fillRect(this.x, this.y, this.width, this.height);
+    }
+  }
+  
   
