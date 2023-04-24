@@ -3,9 +3,9 @@ class Ball {
         this.x = 0;
         this.y = 760;
         this.radius = 10;
-        this.speed = Math.floor(Math.random() * 10) + 1;
+        this.speed = Math.floor(Math.random() * 0) + 1;
         setInterval(() => {
-            this.speed = Math.floor(Math.random() * 25) + 1;
+            this.speed = Math.floor(Math.random() * 5) + 1;
         }, 500);
     }
 
@@ -13,7 +13,7 @@ class Ball {
         this.x += this.speed;
         if (this.x > 600) {
             this.x = 0;
-            this.speed = Math.floor(Math.random() * 10) + 1;
+            this.speed = Math.floor(Math.random() * 0) + 1;
         }
     }
 
@@ -33,37 +33,30 @@ class Square {
       this.x = x;
       this.y = y;
       this.speed = speed;
-      this.isResetting = false;
+      this.resetMethod = false;
     }
   
     update() {
-      if (this.isResetting) {
+      if (this.resetMethod) {
         return;
       }
   
       this.y += this.speed;
   
-      // check square hiting the bottom of the canvas
+      // square bottom of the canvas
       if (this.y + this.height > canvas.height) {
-        this.speed += 1;
+        this.speed += 0.2;
         
         //  half a second delay
-        this.isResetting = true;
+        this.resetMethod = true;
         setTimeout(() => {
           this.reset();
           setTimeout(() => {
-            this.isResetting = false;
+            this.resetMethod = false;
           }, 500);
         }, 500);
       }
-      if (this.x < 0) {
-        this.x = 0;
-      } else if (this.x + this.width > canvas.width) {
-        this.x = canvas.width - this.width;
-      }
     }
-    }
-    
   
     reset() {
       this.x = canvas.width / 2 - 35;
@@ -76,19 +69,19 @@ class Square {
     }
   
     moveLeft() {
-      if (!this.isResetting) {
-        this.x -= 20;
+      if (!this.resetMethod) {
+        this.x -= 10;
       }
     }
   
     moveRight() {
-      if (!this.isResetting) {
-        this.x += 20;
+      if (!this.resetMethod) {
+        this.x += 10;
       }
     }
   
     moveDown() {
-      if (!this.isResetting) {
+      if (!this.resetMethod) {
         this.y += 50;
       }
     }
@@ -97,14 +90,22 @@ class Square {
   class Obstacle {
     constructor() {
       this.width = Math.floor(Math.random() * 201) + 100;
-      this.height = 80;
-      this.x = Math.random() < 0.5 ? -this.width : 600;
+      this.height = 20;
+      this.x = canvas.width - this.width / 2; //right middle center canvas
       this.y = 400 - this.height / 2;
-      this.speed = 0;
+      this.speed = -(Math.floor(Math.random() * 6) + 1); // random speed 
     }
   
     update() {
       this.x += this.speed;
+      if (this.x < -this.width) {
+        // out of the canvas, reset
+        this.width = Math.floor(Math.random() * 101) + 100;
+        this.height = 20;
+        this.x = canvas.width - this.width / 2; 
+        this.y = 400 - this.height / 2;
+        this.speed = -(Math.floor(Math.random() * 6) + 1); 
+      }
     }
   
     draw(context) {
@@ -112,5 +113,6 @@ class Square {
       context.fillRect(this.x, this.y, this.width, this.height);
     }
   }
+  
   
   
