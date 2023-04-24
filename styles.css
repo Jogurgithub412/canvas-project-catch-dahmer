@@ -21,13 +21,3 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-.square {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 70px;
-    height: 40px;
-    background-color: rgb(150, 143, 143);
-    transform: translate(-50%, 0);
-}
