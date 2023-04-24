@@ -1,7 +1,7 @@
 class Game {
-    constructor(canvas) {
+    constructor(canvas, ctx) {
         this.canvas = canvas;
-        this.context = canvas.getContext("2d");
+        this.ctx = ctx;
         this.ball = new Ball();
         this.square = new Square(70, 40, canvas.width / 2 - 35, 0, 2); // create the square
         this.obstacle = new Obstacle();
@@ -9,6 +9,7 @@ class Game {
         this.score = 0;
         this.lifes = 3;
         
+
 
         // listen for arrow keys and down key
         window.addEventListener("keydown", this.handleKeyDown.bind(this));
@@ -24,34 +25,41 @@ class Game {
             return;
         }
 
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         // update + draw ball
+        this.ball.speed = Math.floor(Math.random()*5)+1;
         this.ball.update();
-        this.ball.draw(this.context);
+        this.ball.draw(this.ctx);
 
         // update + draw square
         this.square.update();
-        this.square.draw(this.context);
+        this.square.draw(this.ctx);
 
         this.obstacle.update(); // update obstacle
-        this.obstacle.draw(this.context); // draw obstacle
-
-        //*if (/* future condition for increasing score */) { -----------------------------------------------------
+        this.obstacle.draw(this.ctx); // draw obstacle
+        //if (/ future condition for increasing score /) { -----------------------------------------------------
         //    this.score++;
         //}
 
         // increase life if conditions met
-        //if (/* future condition to decrease life */) { ------------------------------------------------------------
+        //if (/ future condition to decrease life */) { ------------------------------------------------------------
         //    this.lifes--;
-        //}                                                        
+        //}
 
         // draw the score and lifes
-        this.context.fillStyle = "#fff";
-        this.context.fillRect(20, 20, 140, 40);
-        this.context.font = "bold 20px Arial";
-        this.context.fillStyle = "#333";
-        this.context.fillText(`Score: ${this.score}; Lifes: ${this.lifes}`, 25, 45);
+        this.ctx.fillStyle = "#fff";
+        this.ctx.fillRect(20, 20, 200, 40);
+        this.ctx.font = "bold 20px Arial";
+        this.ctx.fillStyle = "#333";
+        this.ctx.fillText(`Score: ${this.score}; Lifes: ${this.lifes}`, 25, 45);
+        
+        if (this.square.y + this.square.height >= this.canvas.height) {
+            this.lifes--;
+            this.square.x = canvas.width / 2 - 35;
+            this.square.y = 5; //--------------------------------------------------------------------------
+          }
+      
 
         requestAnimationFrame(() => {
             this.animate();

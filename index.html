@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kill Dahmer</title>
+    <title>Catch Dahmer</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+<style>
+body {
+        background: grey;   /*change background color */
+        
+    }
+</style>
 <body>
     <div class="container">
-    <canvas id="canvas" width="600" height="800"></canvas>
-    <button id="start-button" class="button">Start</button>
+    <center><img src = "./image/logo.png" alt="" class="logo-img"/></center>
+    <center><canvas id="canvas" width="650" height="900" ></center></canvas>
+    <center></center><button id="start-button" class="button">Start</center></button>
+    <audio autoplay loop>
+        <source src="track/catchdahmer333.mp3" type="audio/ogg">
+        <source src="track/catchdahmer333.mp3" type="audio/mpeg">
+        </audio>
     <script src="index.js"></script>
     <script src="game.js"></script>
     <script src="components.js"></script>
+  
+        
+
+      
 </body>
 </html>

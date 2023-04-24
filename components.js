@@ -1,30 +1,32 @@
 class Ball {
     constructor() {
         this.x = 0;
-        this.y = 760;
+        this.y = 80;
         this.radius = 10;
         this.speed = Math.floor(Math.random() * 0) + 1;
-        setInterval(() => {
-            this.speed = Math.floor(Math.random() * 5) + 1;
-        }, 500);
     }
+  }
+       const ballImg = new Image()
+        ballImg.src = './image/dahmer.png'
+        this.img = ballImg
 
     update() {
         this.x += this.speed;
-        if (this.x > 600) {
+        if (this.x > 605) {
             this.x = 0;
             this.speed = Math.floor(Math.random() * 0) + 1;
         }
-    }
+      }
 
-    draw(context) {
-        context.beginPath();
-        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        context.fillStyle = "black";
-        context.fill();
-        context.closePath();
+    draw(ctx) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.closePath(); 
+        ctx.drawImage(this.img, this.x, this.y-50, this.radius*12,this.radius*12);
     }
-}
+  
 
 class Square {
     constructor(width, height, x, y, speed) {
@@ -33,28 +35,19 @@ class Square {
       this.x = x;
       this.y = y;
       this.speed = speed;
+
       this.resetMethod = false;
     }
   
     update() {
-      if (this.resetMethod) {
-        return;
-      }
   
-      this.y += this.speed;
+     this.y += this.speed;
   
       // square bottom of the canvas
       if (this.y + this.height > canvas.height) {
         this.speed += 0.2;
         
-        //  half a second delay
-        this.resetMethod = true;
-        setTimeout(() => {
-          this.reset();
-          setTimeout(() => {
-            this.resetMethod = false;
-          }, 500);
-        }, 500);
+       
       }
     }
   
@@ -64,8 +57,8 @@ class Square {
     }
   
     draw(context) {
-      context.fillStyle = "red";
-      context.fillRect(this.x, this.y, this.width, this.height);
+      ctx.fillStyle = "red";
+      ctx.fillRect(this.x, this.y, this.width, this.height);
     }
   
     moveLeft() {
@@ -82,14 +75,14 @@ class Square {
   
     moveDown() {
       if (!this.resetMethod) {
-        this.y += 50;
+        this.y += 100;
       }
     }
   }
 
   class Obstacle {
     constructor() {
-      this.width = Math.floor(Math.random() * 201) + 100;
+      this.width = 150;
       this.height = 20;
       this.x = canvas.width - this.width / 2; //right middle center canvas
       this.y = 400 - this.height / 2;
@@ -100,7 +93,7 @@ class Square {
       this.x += this.speed;
       if (this.x < -this.width) {
         // out of the canvas, reset
-        this.width = Math.floor(Math.random() * 101) + 100;
+        this.width = 150;
         this.height = 20;
         this.x = canvas.width - this.width / 2; 
         this.y = 400 - this.height / 2;
@@ -108,11 +101,10 @@ class Square {
       }
     }
   
-    draw(context) {
-      context.fillStyle = "blue";
-      context.fillRect(this.x, this.y, this.width, this.height);
+    draw(ctx) {
+      ctx.fillStyle = "blue";
+      ctx.fillRect(this.x, this.y, this.width, this.height);
     }
   }
-  
   
   
