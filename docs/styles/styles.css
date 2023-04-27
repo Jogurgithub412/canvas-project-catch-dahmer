@@ -3,6 +3,7 @@ body {
   background-size: 275%;
   background-position: center;
   background-position-y: -1330px;
+  overflow-x: hidden;
 }
 
 .logo-img {
