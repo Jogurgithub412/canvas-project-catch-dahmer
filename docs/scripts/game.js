@@ -9,7 +9,7 @@ class Game {
     this.obstacle2 = new Obstacle2();
     this.isRun = false;
     this.score = 0;
-    this.lives = 3;
+    this.lives = 3; 
 
     // listen for arrow keys and down key
     window.addEventListener("keydown", this.handleKeyDown.bind(this));

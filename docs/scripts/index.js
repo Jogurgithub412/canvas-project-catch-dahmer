@@ -9,7 +9,7 @@ window.onload = () => {
     game.start();
   }; 
 };
-let playing = true
+let playing = true 
   const muteButton = document.getElementById("mute-button");
   muteButton.onclick = () => {
     const audio = document.getElementById("audio");

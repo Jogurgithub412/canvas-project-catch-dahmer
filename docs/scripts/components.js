@@ -7,7 +7,7 @@ class Ball {
 
     let ballImg = new Image();
     ballImg.src = "docs/assets/images/dahmer.png";
-    this.img = ballImg;
+    this.img = ballImg; 
   }
 
   update() {
