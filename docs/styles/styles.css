@@ -1,5 +1,5 @@
 body {
-  background-image: url("docs/assets/images/house1.jpeg");
+  background-image: url("https://i.ibb.co/f22VJRX/house1.jpg");
   background-size: 275%;
   background-position: center;
   background-position-y: -1330px;
@@ -81,7 +81,7 @@ body {
 }
 
 canvas {
-  background-image: url("docs/assets/images/jeffrey-flat.jpg");
+  background-image: url("https://i.ibb.co/NWpk2qQ/jeffrey-flat.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
